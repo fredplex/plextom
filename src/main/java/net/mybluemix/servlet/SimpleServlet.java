@@ -22,6 +22,13 @@ public class SimpleServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html");
         response.getWriter().print("Hello World!");
+
+        Map<String, String> env = System.getenv();
+for (String envName : env.keySet()) {
+  response.getWriter().print("<p>");
+  response.getWriter().format("%s=%s%n", envName, env.get(envName));
+  response.getWriter().print("</p>");
+}
     }
 
 }
